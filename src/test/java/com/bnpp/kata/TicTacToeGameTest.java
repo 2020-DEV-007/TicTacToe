@@ -3,17 +3,25 @@ package com.bnpp.kata;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class TicTacToeGameTest {
 
+	TicTacToeGame ticTacToeGame;
+
 	@Test
 	public void newGameInstanceIsNotNull() {
-		assertNotNull(new TicTacToeGame());
+		assertNotNull(ticTacToeGame);
 	}
 
 	@Test
 	public void testInitialPlayerMustBeX() {
-		assertEquals("X", new TicTacToeGame().getCurrentPlayer());
+		assertEquals("X", ticTacToeGame.getCurrentPlayer());
+	}
+
+	@Before
+	public void initializeTicTacToeGame() {
+		ticTacToeGame = new TicTacToeGame();
 	}
 }

@@ -24,4 +24,11 @@ public class TicTacToeGameTest {
 	public void initializeTicTacToeGame() {
 		ticTacToeGame = new TicTacToeGame();
 	}
+
+	@Test
+	public void testSecondPlayerMustBeO() {
+		assertEquals("X", ticTacToeGame.getCurrentPlayer());
+		ticTacToeGame.drawOnBoard();
+		assertEquals("O", ticTacToeGame.getCurrentPlayer());
+	}
 }

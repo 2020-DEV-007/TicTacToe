@@ -5,13 +5,7 @@ class TicTacToeGame {
 	private int filledPosition;
 
 	String getCurrentPlayer() {
-		String player;
-		if(filledPosition % 2 == 0) {
-			player = "X";
-		} else {
-			player = "O";
-		}
-		return player;
+		return filledPosition % 2 == 0 ? "X" :  "O";
 	}
 
 	void drawOnBoard() {

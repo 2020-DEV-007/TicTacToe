@@ -86,4 +86,10 @@ public class TicTacToeGameTest {
 		ticTacToeGame.callDrawOnBoard(1, 9, 4, 5, 7);
 		assertEquals("X", ticTacToeGame.checkWinningSequence());
 	}
+
+	@Test
+	public void testForResultOfGameWhenOIsWinner() throws InvalidMoveException {
+		ticTacToeGame.callDrawOnBoard(2, 1, 9, 4, 5, 7);
+		assertEquals("O", ticTacToeGame.checkWinningSequence());
+	}
 }

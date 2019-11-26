@@ -32,7 +32,7 @@ public class TicTacToeGameTest {
 	@Test
 	public void testSecondPlayerMustBeO() throws InvalidMoveException {
 		assertEquals("X", ticTacToeGame.getCurrentPlayer());
-		ticTacToeGame.drawOnBoard(0);
+		ticTacToeGame.drawOnBoard(1);
 		assertEquals("O", ticTacToeGame.getCurrentPlayer());
 	}
 
@@ -59,5 +59,11 @@ public class TicTacToeGameTest {
 	public void testThrowsExceptionWhenInvalidMove() throws InvalidMoveException {
 		ticTacToeGame.drawOnBoard(1);
 		ticTacToeGame.drawOnBoard(1);
+	}
+
+	@Test
+	public void testMoveWhenTryingToChooseNonexistentPosition() throws InvalidMoveException {
+		assertFalse(ticTacToeGame.isValidMove(10));
+		assertFalse(ticTacToeGame.isValidMove(0));
 	}
 }

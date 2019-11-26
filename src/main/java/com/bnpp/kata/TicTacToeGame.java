@@ -48,20 +48,20 @@ class TicTacToeGame {
 	}
 
 	String checkWinningSequence() {
-		String winner = "";
+		String resultOfGame = "";
 		for (String winningPossibility : winningPossibilities) {
 			if(playerXList.containsAll(prepareWinningSequenceList(winningPossibility))) {
-				winner = "X";
+				resultOfGame = "X";
 				break;
 			} else if(playerOList.containsAll(prepareWinningSequenceList(winningPossibility))) {
-				winner = "O";
+				resultOfGame = "O";
 				break;
 			}
 		}
-		if(filledPosition == 9 && "".equals(winner)) {
-			winner = "Draw";
+		if(filledPosition == 9 && "".equals(resultOfGame)) {
+			resultOfGame = "Draw";
 		}
-		return winner;
+		return resultOfGame;
 	}
 
 	private List<Integer> prepareWinningSequenceList(String positions) {

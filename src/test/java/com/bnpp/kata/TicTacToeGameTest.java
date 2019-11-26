@@ -42,4 +42,9 @@ public class TicTacToeGameTest {
 		assertTrue(listX instanceof List);
 		assertTrue(listO instanceof List);
 	}
+
+	@Test
+	public void testMoveIsValid() {
+		assertTrue(ticTacToeGame.isValidMove(1));
+	}
 }

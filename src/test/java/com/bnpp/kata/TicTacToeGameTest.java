@@ -2,6 +2,9 @@ package com.bnpp.kata;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,5 +33,13 @@ public class TicTacToeGameTest {
 		assertEquals("X", ticTacToeGame.getCurrentPlayer());
 		ticTacToeGame.drawOnBoard();
 		assertEquals("O", ticTacToeGame.getCurrentPlayer());
+	}
+
+	@Test
+	public void testPlayerSpecificList() {
+		List<Integer> listX = ticTacToeGame.getPlayerPositionList("X");
+		List<Integer> listO = ticTacToeGame.getPlayerPositionList("O");
+		assertTrue(listX instanceof List);
+		assertTrue(listO instanceof List);
 	}
 }

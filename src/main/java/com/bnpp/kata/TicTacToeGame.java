@@ -6,7 +6,7 @@ import java.util.List;
 class TicTacToeGame {
 
 	private static final int MAX_POSITION = 9;
-	private static final String DRAW = "Draw";
+	private static final String NO_ONE = "No one";
 	private static final String O = "O";
 	private static final String X = "X";
 	private static final String MINIMUM_POSITIONS_TO_DECIDE_WINNER = "Minimum 5 positions must be filled to decide winner";
@@ -61,7 +61,7 @@ class TicTacToeGame {
 	private String decideWinner(String resultOfGame) {
 		resultOfGame = decideXOrOWin(resultOfGame);
 		if(filledPosition == 9 && "".equals(resultOfGame)) {
-			resultOfGame = DRAW;
+			resultOfGame = NO_ONE;
 		}
 		return resultOfGame;
 	}

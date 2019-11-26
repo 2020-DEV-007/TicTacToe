@@ -5,13 +5,18 @@ import java.util.List;
 
 class TicTacToeGame {
 
+	private static final int MAX_POSITION = 9;
+	private static final String DRAW = "Draw";
+	private static final String O = "O";
+	private static final String X = "X";
+	private static final String MINIMUM_POSITIONS_TO_DECIDE_WINNER = "Minimum 5 positions must be filled to decide winner";
 	private int filledPosition;
 	private List<Integer> playerXList = new ArrayList<Integer>();
 	private List<Integer> playerOList = new ArrayList<Integer>();
 	private String[] winningPossibilities = {"1,2,3", "4,5,6", "7,8,9", "1,4,7", "2,5,8", "3,6,9", "1,5,9", "3,5,7"};
 
 	String getCurrentPlayer() {
-		return filledPosition % 2 == 0 ? "X" : "O";
+		return filledPosition % 2 == 0 ? X : O;
 	}
 
 	void drawOnBoard(int position) throws InvalidMoveException {
@@ -25,7 +30,7 @@ class TicTacToeGame {
 	}
 
 	List<Integer> getPlayerPositionList(String player) {
-		return "X".equals(player) ? playerXList : playerOList;
+		return X.equals(player) ? playerXList : playerOList;
 	}
 
 	boolean isValidMove(int position) {
@@ -37,7 +42,7 @@ class TicTacToeGame {
 	}
 
 	private boolean isValidRange(int position) {
-		return position >= 1 && position <= 9;
+		return position >= 1 && position <= MAX_POSITION;
 	}
 
 	void callDrawOnBoard(int... positions) throws InvalidMoveException {
@@ -49,24 +54,31 @@ class TicTacToeGame {
 
 	String checkWinningSequence() {
 		String resultOfGame = "";
-		if(filledPosition < 5) {
-			resultOfGame = "Minimum 5 positions must be filled to decide winner";
-		} else {
-			for (String winningPossibility : winningPossibilities) {
-				if(playerXList.containsAll(prepareWinningSequenceList(winningPossibility))) {
-					resultOfGame = "X";
-					break;
-				} else if(playerOList.containsAll(prepareWinningSequenceList(winningPossibility))) {
-					resultOfGame = "O";
-					break;
-				}
-			}
-			if(filledPosition == 9 && "".equals(resultOfGame)) {
-				resultOfGame = "Draw";
+		resultOfGame = filledPosition < 5 ? MINIMUM_POSITIONS_TO_DECIDE_WINNER : decideWinner(resultOfGame);
+		return resultOfGame;
+	}
+
+	private String decideWinner(String resultOfGame) {
+		resultOfGame = decideXOrOWin(resultOfGame);
+		if(filledPosition == 9 && "".equals(resultOfGame)) {
+			resultOfGame = DRAW;
+		}
+		return resultOfGame;
+	}
+
+	private String decideXOrOWin(String resultOfGame) {
+		for (String winningPossibility : winningPossibilities) {
+			if(playerXList.containsAll(prepareWinningSequenceList(winningPossibility))) {
+				resultOfGame = X;
+				break;
+			} else if(playerOList.containsAll(prepareWinningSequenceList(winningPossibility))) {
+				resultOfGame = O;
+				break;
 			}
 		}
 		return resultOfGame;
 	}
+
 
 	private List<Integer> prepareWinningSequenceList(String positions) {
 		List<Integer> winningPosibility = new ArrayList<Integer>();

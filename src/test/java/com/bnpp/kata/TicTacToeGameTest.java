@@ -98,4 +98,10 @@ public class TicTacToeGameTest {
 		ticTacToeGame.callDrawOnBoard(9, 2, 8, 6, 4, 1, 5, 7, 3);
 		assertEquals("Draw", ticTacToeGame.checkWinningSequence());
 	}
+
+	@Test
+	public void testAtleast5PositionsMustBeFilled() throws InvalidMoveException {
+		ticTacToeGame.callDrawOnBoard(9, 2, 8, 6);
+		assertEquals("Minimum 5 positions must be filled to decide winner", ticTacToeGame.checkWinningSequence());
+	}
 }

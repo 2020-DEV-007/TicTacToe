@@ -49,17 +49,21 @@ class TicTacToeGame {
 
 	String checkWinningSequence() {
 		String resultOfGame = "";
-		for (String winningPossibility : winningPossibilities) {
-			if(playerXList.containsAll(prepareWinningSequenceList(winningPossibility))) {
-				resultOfGame = "X";
-				break;
-			} else if(playerOList.containsAll(prepareWinningSequenceList(winningPossibility))) {
-				resultOfGame = "O";
-				break;
+		if(filledPosition < 5) {
+			resultOfGame = "Minimum 5 positions must be filled to decide winner";
+		} else {
+			for (String winningPossibility : winningPossibilities) {
+				if(playerXList.containsAll(prepareWinningSequenceList(winningPossibility))) {
+					resultOfGame = "X";
+					break;
+				} else if(playerOList.containsAll(prepareWinningSequenceList(winningPossibility))) {
+					resultOfGame = "O";
+					break;
+				}
 			}
-		}
-		if(filledPosition == 9 && "".equals(resultOfGame)) {
-			resultOfGame = "Draw";
+			if(filledPosition == 9 && "".equals(resultOfGame)) {
+				resultOfGame = "Draw";
+			}
 		}
 		return resultOfGame;
 	}

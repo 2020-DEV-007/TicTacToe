@@ -13,9 +13,13 @@ class TicTacToeGame {
 		return filledPosition % 2 == 0 ? "X" :  "O";
 	}
 
-	void drawOnBoard(int position) {
+	void drawOnBoard(int position) throws InvalidMoveException {
 		List<Integer> currentPlayerList = getPlayerPositionList(getCurrentPlayer());
-		currentPlayerList.add(position);
+		if(isValidMove(position)){
+			currentPlayerList.add(position);
+		} else {
+			throw new InvalidMoveException("Position " + position + " is already filled");
+		}
 		filledPosition++;
 	}
 

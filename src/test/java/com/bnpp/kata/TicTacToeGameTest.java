@@ -30,7 +30,7 @@ public class TicTacToeGameTest {
 	}
 
 	@Test
-	public void testSecondPlayerMustBeO() {
+	public void testSecondPlayerMustBeO() throws InvalidMoveException {
 		assertEquals("X", ticTacToeGame.getCurrentPlayer());
 		ticTacToeGame.drawOnBoard(0);
 		assertEquals("O", ticTacToeGame.getCurrentPlayer());
@@ -50,8 +50,14 @@ public class TicTacToeGameTest {
 	}
 
 	@Test
-	public void testMoveIsInvalidWhenTryingToChooseSamePosition() {
+	public void testMoveIsInvalidWhenTryingToChooseSamePosition() throws InvalidMoveException {
 		ticTacToeGame.drawOnBoard(1);
 		assertFalse(ticTacToeGame.isValidMove(1));
+	}
+
+	@Test(expected = InvalidMoveException.class)
+	public void testThrowsExceptionWhenInvalidMove() throws InvalidMoveException {
+		ticTacToeGame.drawOnBoard(1);
+		ticTacToeGame.drawOnBoard(1);
 	}
 }

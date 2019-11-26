@@ -13,7 +13,9 @@ class TicTacToeGame {
 		return filledPosition % 2 == 0 ? "X" :  "O";
 	}
 
-	void drawOnBoard() {
+	void drawOnBoard(int position) {
+		List<Integer> currentPlayerList = getPlayerPositionList(getCurrentPlayer());
+		currentPlayerList.add(position);
 		filledPosition++;
 	}
 

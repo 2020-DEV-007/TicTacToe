@@ -1,6 +1,7 @@
 package com.bnpp.kata;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -31,7 +32,7 @@ public class TicTacToeGameTest {
 	@Test
 	public void testSecondPlayerMustBeO() {
 		assertEquals("X", ticTacToeGame.getCurrentPlayer());
-		ticTacToeGame.drawOnBoard();
+		ticTacToeGame.drawOnBoard(0);
 		assertEquals("O", ticTacToeGame.getCurrentPlayer());
 	}
 
@@ -46,5 +47,11 @@ public class TicTacToeGameTest {
 	@Test
 	public void testMoveIsValid() {
 		assertTrue(ticTacToeGame.isValidMove(1));
+	}
+
+	@Test
+	public void testMoveIsInvalidWhenTryingToChooseSamePosition() {
+		ticTacToeGame.drawOnBoard(1);
+		assertFalse(ticTacToeGame.isValidMove(1));
 	}
 }

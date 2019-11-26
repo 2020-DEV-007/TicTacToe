@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -73,14 +74,11 @@ public class TicTacToeGameTest {
 		ticTacToeGame.callDrawOnBoard(1, 2, 3, 4, 5);
 		List<Integer> listX = ticTacToeGame.getPlayerPositionList("X");
 		List<Integer> listO = ticTacToeGame.getPlayerPositionList("O");
-		List<Integer> chosenPositionsOfX = new ArrayList<Integer>();
-		List<Integer> chosenPositionsOfO = new ArrayList<Integer>();
-		chosenPositionsOfX.add(1);
-		chosenPositionsOfO.add(2);
-		chosenPositionsOfX.add(3);
-		chosenPositionsOfO.add(4);
-		chosenPositionsOfX.add(5);
-		assertTrue(listX.containsAll(chosenPositionsOfX));
-		assertTrue(listO.containsAll(chosenPositionsOfO));
+		assertTrue(listX.containsAll(preparePositionList(1, 3, 5)));
+		assertTrue(listO.containsAll(preparePositionList(2, 4)));
+	}
+
+	private List<Integer> preparePositionList(Integer... positions) {
+		return Arrays.asList(positions);
 	}
 }

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -65,5 +66,21 @@ public class TicTacToeGameTest {
 	public void testMoveWhenTryingToChooseNonexistentPosition() throws InvalidMoveException {
 		assertFalse(ticTacToeGame.isValidMove(10));
 		assertFalse(ticTacToeGame.isValidMove(0));
+	}
+
+	@Test
+	public void fillMultiplePositionInSingleCall() throws InvalidMoveException {
+		ticTacToeGame.callDrawOnBoard(1, 2, 3, 4, 5);
+		List<Integer> listX = ticTacToeGame.getPlayerPositionList("X");
+		List<Integer> listO = ticTacToeGame.getPlayerPositionList("O");
+		List<Integer> chosenPositionsOfX = new ArrayList<Integer>();
+		List<Integer> chosenPositionsOfO = new ArrayList<Integer>();
+		chosenPositionsOfX.add(1);
+		chosenPositionsOfO.add(2);
+		chosenPositionsOfX.add(3);
+		chosenPositionsOfO.add(4);
+		chosenPositionsOfX.add(5);
+		assertTrue(listX.containsAll(chosenPositionsOfX));
+		assertTrue(listO.containsAll(chosenPositionsOfO));
 	}
 }

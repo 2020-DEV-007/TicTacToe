@@ -58,6 +58,9 @@ class TicTacToeGame {
 				break;
 			}
 		}
+		if(filledPosition == 9 && "".equals(winner)) {
+			winner = "Draw";
+		}
 		return winner;
 	}
 

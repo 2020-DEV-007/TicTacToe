@@ -22,10 +22,6 @@ class TicTacToeGame {
 	}
 
 	boolean isValidMove(int position) {
-		if(playerXList.contains(position) || playerOList.contains(position)) {
-			return false;
-		}
-		return true;
+		return !(playerXList.contains(position) || playerOList.contains(position));
 	}
-
 }

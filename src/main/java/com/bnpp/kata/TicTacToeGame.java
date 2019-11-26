@@ -28,8 +28,14 @@ class TicTacToeGame {
 	}
 
 	boolean isValidMove(int position) {
-		boolean isValidRange = position >= 1 && position <= 9;
-		boolean isAvailable = !(playerXList.contains(position) || playerOList.contains(position));
-		return isValidRange && isAvailable;
+		return isValidRange(position) && isAvailable(position);
+	}
+
+	private boolean isAvailable(int position) {
+		return !(playerXList.contains(position) || playerOList.contains(position));
+	}
+
+	private boolean isValidRange(int position) {
+		return position >= 1 && position <= 9;
 	}
 }

@@ -31,6 +31,6 @@ Maven 3.5+
 <b>Note:</b>
 Player selection is done in the code itself. Player X goes first and then O and then X and so on...
 
-The 'position' needs to be from 0 to 8, if not, an IllegalPositionException is thrown at runtime.
+The 'position' needs to be from 1 to 9, if not, an IllegalPositionException is thrown at runtime.
 
-Whenever there is a result (X win or O win or Draw), it will be shown in the console.
+Whenever there is a result ("X is winner" or "O is winner" or "No one is winner" (Draw/ Tie)), it will be shown in the console.

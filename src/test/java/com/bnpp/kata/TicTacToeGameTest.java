@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -80,5 +79,11 @@ public class TicTacToeGameTest {
 
 	private List<Integer> preparePositionList(Integer... positions) {
 		return Arrays.asList(positions);
+	}
+
+	@Test
+	public void testForResultOfGameWhenXIsWinner() throws InvalidMoveException {
+		ticTacToeGame.callDrawOnBoard(1, 9, 4, 5, 7);
+		assertEquals("X", ticTacToeGame.checkWinningSequence());
 	}
 }

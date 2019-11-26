@@ -8,6 +8,7 @@ class TicTacToeGame {
 	private int filledPosition;
 	private List<Integer> playerXList = new ArrayList<Integer>();
 	private List<Integer> playerOList = new ArrayList<Integer>();
+	private String[] winningPossibilities = {"1,2,3", "4,5,6", "7,8,9", "1,4,7", "2,5,8", "3,6,9", "1,5,9", "3,5,7"};
 
 	String getCurrentPlayer() {
 		return filledPosition % 2 == 0 ? "X" : "O";
@@ -44,5 +45,27 @@ class TicTacToeGame {
 			drawOnBoard(position);
 		}
 
+	}
+
+	String checkWinningSequence() {
+		String winner = "";
+		for (String winningPossibility : winningPossibilities) {
+			if(playerXList.containsAll(prepareWinningSequenceList(winningPossibility))) {
+				winner = "X";
+				break;
+			} else if(playerOList.containsAll(prepareWinningSequenceList(winningPossibility))) {
+				winner = "O";
+				break;
+			}
+		}
+		return winner;
+	}
+
+	private List<Integer> prepareWinningSequenceList(String positions) {
+		List<Integer> winningPosibility = new ArrayList<Integer>();
+		for (String position : positions.split(",")) {
+			winningPosibility.add(Integer.parseInt(position));
+		}
+		return winningPosibility;
 	}
 }
